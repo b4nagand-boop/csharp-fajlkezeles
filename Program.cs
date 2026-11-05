@@ -1,3 +1,3 @@
 ﻿foreach (var item in collection) {
-
+    
 }
