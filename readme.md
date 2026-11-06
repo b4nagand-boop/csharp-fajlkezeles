@@ -1,23 +1,27 @@
 # Biztonsági beléptetőrendszer
 
+> A programot készítette Nagy András László és Nagy Izabella
+
 A program a portások és biztonsági őrök munkáját könnyíti meg egy beléptető programmal, ami az alábbi információkat tudja feljegyezni felhasználói bemenettel:
 - Emberek esetén igazolványszámot,
 - Autók esetén rendszámot,
 - Ezek a létesítménybe való bejutásának időpontját.
 
-## Használati útmutató
-
 A programnak két funkciója van: eltárolni a bevitt adatokat, és lehetővé tenni az azok közötti keresést.
+
+## Használati útmutató
 
 ### 1. Adatok hozzáadása és eltárolása
 
 #### 1.1 A felhasználó által elvégezendő lépések
 
-1. lépés: A felhasználó kiválasztja a belépő egyed típusát.
+1. lépés: A felhasználó kiválasztja a "Hozzáadás" opciót a **"H"** (Hozzáadás) betű terminálba való beírásával.
+
+2. lépés: A felhasználó kiválasztja a belépő egyed típusát.
     - Ember és kerékpár esetén **"I"** (Igazolványszám) betűt,
     - Személygépkocsi és egyéb jármű esetén **"R"** (Rendszám) betűt.
 
-2. lépés: A felhasználó felviszi az egyed azonosítóját.
+3. lépés: A felhasználó felviszi az egyed azonosítóját.
     - Ember és kerékpár esetén a **személyigazolvány számát**,
     - Személygépkocsi és egyéb jármű esetén **rendszámot**.
 
@@ -40,4 +44,16 @@ A programnak két funkciója van: eltárolni a bevitt adatokat, és lehetővé t
 
 ### 2. Adatok böngészése
 
-#### 2.1 A felhasz
+#### 2.1 A felhaszáló által elvégezendő lépések
+
+1. lépés: A felhasználó kiválasztja a "Böngészés" opciót a **"B"** (Böngészés) betű terminálba való beírásával.
+
+2. lépés: A felhasználó beírja a terminálba a listázott egyedek közül kiválasztott azonosítóját.
+
+#### 2.2 A program működése
+
+1. lépés: A program beolvassa a felhasználó által bekért adatokat.
+
+2. lépés: A program leellenőrzi, hogy benne van-e a listában az adott azonosító
+    - Ha benne van, akkor kiiírja az azonosítóhoz kapcsolt fájl tartalmát (a belépések időpontjait kronológiai sorrendben).
+    - Ha nincs benne, akkor tájékoztatja a felhasználót, hogy az adott azonosító nem szerepel a rendszerben.
