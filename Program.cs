@@ -1,11 +1,7 @@
 ﻿using System.IO;
 
 if (!File.Exists("db.csv")) {
-    File.Create("db.csv");
-    File.AppendText("db.csv");
-    using(StreamWriter sw = File.AppendText("db.csv")) {
-        sw.WriteLine("tipus; datum");
-    }
+    File.WriteAllText("db.csv", "tipus; datum" + Environment.NewLine);
 }
 
 string valasztas;
@@ -22,7 +18,7 @@ if (valasztas == "H" ||
         bool validRendszam = false;
         Console.Write("rendszám > ");
         string rendszam = Console.ReadLine();
-        if (rendszam.Length() == 7) {
+        if (rendszam.Count() == 7) {
             if (!rendszam.Substring(0, 3).Contains('-') &&
                 !rendszam.Substring(4, 3).Contains('-')) {
                 if (rendszam.Substring(0, 3).All(char.IsAsciiLetterUpper) &&
@@ -33,9 +29,16 @@ if (valasztas == "H" ||
         }
 
         if (validRendszam) {
-            using(StreamWriter sw = File.AppendText("db.csv")) {
-                sw.WriteLine("rendszam; datum");
+            if (!File.ReadAllText("db.csv").Contains($"rendszam; {rendszam}")) {
+                using(StreamWriter sw = File.AppendText("db.csv")) {
+                    sw.WriteLine($"rendszam; {rendszam}");
+                }
             }
+
+            DateTime DatumMost = DateTime.Now;
+            File.AppendAllText($"{rendszam}.csv", DatumMost.ToString("yyyy.MM.dd HH:mm:ss") + Environment.NewLine);
+        } else {
+            Console.WriteLine("helytelen formátum");
         }
     } else if (valasztas == "i" ||
                valasztas == "I") {
