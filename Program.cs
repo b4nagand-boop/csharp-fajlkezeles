@@ -42,7 +42,18 @@ if (valasztas == "H" ||
         }
     } else if (valasztas == "i" ||
                valasztas == "I") {
-        // IDE CSINÁLD NIGABELLA
+
+        Console.Write("igazolványszám > ");
+        string igszam = Console.ReadLine();
+
+        if (igszam.Count() == 6) {
+
+        }
+
+        else {
+            Console.WriteLine("helytelen formátum");
+        }
+        
     }
 } else if (valasztas == "B" ||
            valasztas == "b") {
