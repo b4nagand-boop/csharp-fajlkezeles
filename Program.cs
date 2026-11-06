@@ -1,5 +1,13 @@
 ﻿using System.IO;
 
+if (!File.Exists("db.csv")) {
+    File.Create("db.csv");
+    File.AppendText("db.csv");
+    using(StreamWriter sw = File.AppendText("db.csv")) {
+        sw.WriteLine("tipus; datum");
+    }
+}
+
 string valasztas;
 Console.WriteLine("[h]ozzáadás; [b]öngészés");
 Console.Write("> ");
@@ -12,7 +20,7 @@ if (valasztas == "H" ||
     if (valasztas == "r" ||
         valasztas == "R") {
         bool validRendszam = false;
-        Console.Write("kérem a rendszámot > ");
+        Console.Write("rendszám > ");
         string rendszam = Console.ReadLine();
         if (rendszam.Length() == 7) {
             if (!rendszam.Substring(0, 3).Contains('-') &&
@@ -21,6 +29,12 @@ if (valasztas == "H" ||
                     rendszam.Substring(4, 3).All(char.IsAsciiDigit)) {
                     validRendszam = true;
                 }
+            }
+        }
+
+        if (validRendszam) {
+            using(StreamWriter sw = File.AppendText("db.csv")) {
+                sw.WriteLine("rendszam; datum");
             }
         }
     } else if (valasztas == "i" ||
@@ -34,11 +48,4 @@ if (valasztas == "H" ||
     Console.WriteLine("ismeretlen parancs");
 }
 
-// if (!File.Exists("db.csv")) {
-//     File.Create("db.csv");
-//     File.AppendText("tipus; azonosito; datum");
-// } else {
-//     foreach (string line in File.ReadAllText().Split('\n').Skip(1)) {
-        
-//     }
-// }
+//foreach (string line in File.ReadAllText().Split('\n').Skip(1)) {
